@@ -302,11 +302,6 @@
 <OPTIONSELECT Value="0" />
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="1028" ColName="patronymic" PrevColName="" Pos="3" idDatatype="20" DatatypeParams="(45)" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
-<OPTIONSELECTED>
-<OPTIONSELECT Value="0" />
-</OPTIONSELECTED>
-</COLUMN>
 <COLUMN ID="1029" ColName="email" PrevColName="" Pos="4" idDatatype="20" DatatypeParams="(45)" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="0" />
@@ -352,6 +347,17 @@
 <INDEX ID="1046" IndexName="users_FKIndex1" IndexKind="1" FKRefDef_Obj_id="1044">
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="1099" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+<INDEX ID="1132" IndexName="users_full_name_index" IndexKind="1" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1027" LengthParam="0" />
+<INDEXCOLUMN idColumn="1026" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+<INDEX ID="1134" IndexName="users_phone_number_index" IndexKind="1" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1030" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 </INDICES>
@@ -413,6 +419,11 @@
 <INDEX ID="1110" IndexName="checking_accounts_FKIndex2" IndexKind="1" FKRefDef_Obj_id="1108">
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="1111" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+<INDEX ID="1137" IndexName="checking_accounts_user_index" IndexKind="1" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1100" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 </INDICES>
@@ -489,6 +500,11 @@
 <INDEXCOLUMN idColumn="1107" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
+<INDEX ID="1139" IndexName="ATMs_position_address_index" IndexKind="3" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1078" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
 </INDICES>
 </TABLE>
 <TABLE ID="1014" Tablename="operations" PrevTableName="Table_05" XPos="759" YPos="328" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="6" >
@@ -506,18 +522,6 @@
 </OPTIONSELECTED>
 </COLUMN>
 <COLUMN ID="1121" ColName="src_point" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
-<OPTIONSELECTED>
-<OPTIONSELECT Value="1" />
-<OPTIONSELECT Value="0" />
-</OPTIONSELECTED>
-</COLUMN>
-<COLUMN ID="1128" ColName="dst_total" PrevColName="" Pos="4" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
-<OPTIONSELECTED>
-<OPTIONSELECT Value="1" />
-<OPTIONSELECT Value="0" />
-</OPTIONSELECTED>
-</COLUMN>
-<COLUMN ID="1129" ColName="commission" PrevColName="" Pos="4" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1" />
 <OPTIONSELECT Value="0" />

@@ -1,0 +1,14 @@
+s/ operations/ bank_system.operations/;
+s/ operation_points/ bank_system.operation_points/;
+s/ checking_accounts/ bank_system.checking_accounts/;
+s/ ATMs/ bank_system.ATMs/;
+s/ users/ bank_system.users/;
+s/ user_statuses/ bank_system.user_statuses/;
+s/ currencies/ bank_system.currencies/;
+s/ currencies/ bank_system.currencies/;
+s/ user_statuses/ bank_system.user_statuses/;
+s/ users/ bank_system.users/;
+s/ ATMs/ bank_system.ATMs/;
+s/ checking_accounts/ bank_system.checking_accounts/;
+s/ operation_points/ bank_system.operation_points/;
+s/ operations/ bank_system.operations/;

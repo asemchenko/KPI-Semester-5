@@ -1,3 +1,17 @@
+DROP TABLE bank_system.operations;
+
+DROP TABLE bank_system.operation_points;
+
+DROP TABLE bank_system.checking_accounts;
+
+DROP TABLE bank_system.ATMs;
+
+DROP TABLE bank_system.users;
+
+DROP TABLE bank_system.user_statuses;
+
+DROP TABLE bank_system.currencies;
+
 CREATE TABLE bank_system.currencies (
   id_currency SERIAL  NOT NULL ,
   currency_name VARCHAR(50)      ,
@@ -13,7 +27,7 @@ CREATE TABLE bank_system.user_statuses (
 PRIMARY KEY(id_status));
 
 
-CREATE TYPE hashing_algo_t as ENUM('md5', 'sha512', 'sha256');
+CREATE TYPE hash_algo_t as ENUM('md5', 'sha512', 'sha256', 'sha128');
 
 CREATE TABLE bank_system.users (
   user_id SERIAL  NOT NULL ,
@@ -24,11 +38,11 @@ CREATE TABLE bank_system.users (
   phone_number VARCHAR(20)    ,
   password_hash VARCHAR(255)    ,
   password_salt VARCHAR(255)    ,
-  hashing_algorithm hashing_algo_t    ,
+  hashing_algorithm hash_algo_t    ,
   passport_number VARCHAR(20)      ,
 PRIMARY KEY(user_id)      ,
   FOREIGN KEY(id_status)
-    REFERENCES bank_system.user_statuses(id_status));
+    REFERENCES bank_system.user_statuses(id_status)) INHERITS (bank_system.creation_times);
 
 
 CREATE INDEX users_FKIndex1 ON bank_system.users (id_status);
@@ -46,7 +60,7 @@ CREATE TABLE bank_system.ATMs (
   total_money INTEGER      ,
 PRIMARY KEY(id_atm)    ,
   FOREIGN KEY(id_currency)
-    REFERENCES bank_system.currencies(id_currency));
+    REFERENCES bank_system.currencies(id_currency)) INHERITS (bank_system.creation_times);
 
 
 CREATE INDEX ATMs_FKIndex2 ON bank_system.ATMs (id_currency);
@@ -67,7 +81,7 @@ PRIMARY KEY(account_id)      ,
   FOREIGN KEY(user_id)
     REFERENCES bank_system.users(user_id),
   FOREIGN KEY(id_currency)
-    REFERENCES bank_system.currencies(id_currency));
+    REFERENCES bank_system.currencies(id_currency)) INHERITS (bank_system.creation_times);
 
 
 CREATE INDEX checking_accounts_FKIndex1 ON bank_system.checking_accounts (user_id);
@@ -101,12 +115,14 @@ CREATE INDEX IFK_Rel_04 ON bank_system.operation_points (checking_accounts_accou
 CREATE TABLE bank_system.operations (
   id_operation SERIAL  NOT NULL ,
   dst_point INTEGER   NOT NULL ,
-  src_point INTEGER   NOT NULL   ,
+  src_point INTEGER   NOT NULL ,
+  forward_sum INTEGER    ,
+  comission INTEGER      ,
 PRIMARY KEY(id_operation)    ,
   FOREIGN KEY(src_point)
     REFERENCES bank_system.operation_points(id_operation_point),
   FOREIGN KEY(dst_point)
-    REFERENCES bank_system.operation_points(id_operation_point));
+    REFERENCES bank_system.operation_points(id_operation_point)) INHERITS (bank_system.creation_times);
 
 
 CREATE INDEX operations_FKIndex1 ON bank_system.operations (src_point);
